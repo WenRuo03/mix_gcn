@@ -1,0 +1,25 @@
+# feeder
+feeder: feeders.feeder.Feeder
+test_feeder_args:
+  data_path: ./data/test_B_bone.npy
+  label_path: ./data/test_B_label.npy
+  debug: False
+
+# model
+model: model_td.tdgcn.Model
+model_args:
+  num_class: 155
+  num_point: 17
+  num_person: 2
+  graph: graph.uav.Graph
+  graph_args:
+    labeling_mode: 'spatial'
+  in_channels: 3
+
+# test
+phase: test
+device: [0]
+test_batch_size: 128
+weights: ./checkpoints/td_b.pt
+
+save_score: True
